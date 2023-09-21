@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import SearchInput from "./component/search-input";
+import ProductList from "./component/product-list";
+import 'tailwindcss/tailwind.css';
+// import { ReactQueryDevtools } from 'react-query-devtools'
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
+  const queryClient = new QueryClient();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className='className="bg-neutral-8 rounded-3xl p-6 flex flex-col gap-8 items-start justify-start w-96 h-[880px] relative shadow-basic-box-shadow overflow-hidden'>
+        <SearchInput />
+        <ProductList />
+      </div>
+      {/* <ReactQueryDevtools initialIsOpen={true} /> */}
+    </QueryClientProvider>
   );
 }
 
